@@ -24,7 +24,6 @@ public class N1012_Main {
 			int K = Integer.parseInt(st.nextToken());
 
 			boolean[][] map = new boolean[N][M];
-			
 			for (int j = 0; j < K; j++) {
 				st = new StringTokenizer(in.readLine(), " ");
 				int y = Integer.parseInt(st.nextToken());
@@ -35,7 +34,7 @@ public class N1012_Main {
 			root = new int[N][M]; //초기화 작업
 			for (int x = 0; x < N; x++) {
 				for (int y = 0; y < M; y++) {
-					if(map[x][y]) // 배추가 있는 부분
+					if(map[x][y])
 						root[x][y] = x*M+y;
 					else
 						root[x][y] = N*M;
@@ -46,39 +45,34 @@ public class N1012_Main {
 			int[] dy = {0,1,-1,0};
 			for (int x = 0; x < N; x++) {
 				for (int y = 0; y < M; y++) {
-					if(map[x][y]) { //배추 부분인 경우 -> 4방탐색
+					if(map[x][y]) {
 						for (int l = 0; l < 4; l++) {
 							int newX = x+dx[l];
 							int newY = y+dy[l];
 							if(newX<0 || newY<0 || newX>=N || newY>=M)
 								continue;
-							if(map[newX][newY]) { // map[newX][newY]도 배추인 경우 Union-find
+							if(map[newX][newY]) {
 								make_set(x,y,newX,newY);
-								for (int j = 0; j < N; j++) {
-									for (int j2 = 0; j2 < M; j2++) {
-										System.out.printf("%4d ",root[j][j2]);
-									}System.out.println();
-								}
 							}
 						}
 					}
 				}
 			}
-			
-			// Union-find 결과 개수 세기
+
 			HashSet<Integer> set = new HashSet<>();
 			for (int x = 0; x < N; x++) {
 				for (int y = 0; y < M; y++) {
-					set.add(root[x][y]);
+					if(map[x][y]) {
+						int rootValue = root[x][y];
+						int rootX = rootValue/M;
+						int rootY = rootValue%M;
+						set.add(root[rootX][rootY]);
+					}
 				}
 			}
 
-			int size = set.size()-1;
-
-			if(size == 0)
-				sb.append(size+1).append("\n");
-			else
-				sb.append(size).append("\n");
+			int size = set.size();
+			sb.append(size).append("\n");
 		}
 
 		System.out.println(sb);
@@ -88,19 +82,40 @@ public class N1012_Main {
 	private static void make_set(int x1, int y1, int x2, int y2) {
 		int parent1 = find(x1,y1);
 		int parent2 = find(x2,y2);
-
+		
 		if(parent1 == parent2) {
 			return;
 		}else {
-			root[parent1/M][parent1%M] = parent2; //root노드 초기화
-			find(x1,y1); //root노드 부터 x1,y1까지 parent2 값으로 초기화	
+			if(parent1 > parent2) {
+//				for (int i = 0; i < N; i++) {
+//					for (int j = 0; j < M; j++) {
+//						// parent1이 루트 노드인 모든 노드 parent2로 루트노드 바꾸기
+//						if(root[i][j] == parent1)
+//							root[i][j] = parent2;
+//					}
+//				}
+				root[parent1/M][parent1%M] = parent2;
+				find(x1,y1);
+			}else {
+//				for (int i = 0; i < N; i++) {
+//					for (int j = 0; j < M; j++) {
+//						// parent2가 루트 노드인 모든 노드 parent1로 루트노드 바꾸기
+//						if(root[i][j] == parent2)
+//							root[i][j] = parent1;
+//					}
+//				}
+				root[parent2/M][parent2%M] = parent1;
+				find(x2,y2);
+			}
 		}
+
 	}
+
 
 	private static int find(int x, int y) {
 		int parent = root[x][y];
 		if(parent == x*M+y) {
-			return x*M+y;	
+			return x*M+y;
 		}else {
 			int nextX = parent/M;
 			int nextY = parent%M;
