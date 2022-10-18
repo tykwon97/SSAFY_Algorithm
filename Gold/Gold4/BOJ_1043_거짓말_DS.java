@@ -1,4 +1,4 @@
-package SSAFY_Algorithm.Gold.Gold4;
+package Gold.Gold4;
 
 import java.io.BufferedReader;
 import java.io.IOException;

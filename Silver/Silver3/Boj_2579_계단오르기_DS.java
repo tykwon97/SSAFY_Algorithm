@@ -1,4 +1,4 @@
-package SSAFY_Algorithm.Silver.Silver3;
+package Silver.Silver3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
