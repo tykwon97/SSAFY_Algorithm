@@ -1,4 +1,4 @@
-# SSAFY 서울10반 알고리즘 스터디
+# SSAFY 서울10반 알고리즘 스터디 🍕
 
 ## Convention
 파일 이름 : BOJ_문제번호_문제제목_이름이니셜.java  
@@ -14,12 +14,11 @@ ex) #1 BOJ_2579_계단오르기_TY
 
 ### 각자 본인의 branch에서 작업하기!!
 1. 본인의 branch로 checkout한다.  
-![image](https://user-images.githubusercontent.com/68904159/193990480-2e92b454-ca69-471c-a19c-1e4f6f1572dd.png)
-2. master branch의 작업 내용을 본인의 branch로 pull 받는다.  
-![image](https://user-images.githubusercontent.com/68904159/193991299-a78eff0c-8e70-4ae7-a523-47d71eb081c3.png)
+![image](https://user-images.githubusercontent.com/68904159/193990480-2e92b454-ca69-471c-a19c-1e4f6f1572dd.png)  
+~~2. master branch의 작업 내용을 본인의 branch로 pull 받는다.~~    
 3. 본인의 branch에서 작업한다.  
 4. 본인의 branch에 add 및 commit한다.  
-5. 본인의 branch로 push한다. (+ push전에는 항상 pull부터 하기)
+5. 본인의 branch로 push한다. ~~(+ push전에는 항상 pull부터 하기)~~
 ![image](https://user-images.githubusercontent.com/68904159/193991674-b7c9bd34-fb2e-4962-9b85-e26ac0a26c38.png)  
 6. 본인의 branch에서 master로 pull request요청한다.  
 ![image](https://user-images.githubusercontent.com/68904159/193991743-1aa7b216-965a-4cc2-8e38-be47e052b0ae.png)  
