@@ -35,19 +35,17 @@ public class BOJ_19621_회의실배정2_JH {
 			
 		});
 		
-		dp[0] = arr[0][2];
+		for(int i = 0; i < N; i++) {
+			dp[i] = arr[i][2];
+		}
 		for(int i = 1; i < N; i++) {
-			int flag = 0;
-			for(int j = i-1; j >= 0; j--) {
-					if(arr[j][1] < arr[i][0] && dp[i] < dp[j] + arr[i][2]) {
-						flag = 1;
+			for(int j = i-1; j >= 0; j--) {  // 이전 회의들과 시간비교
+					if(arr[j][1] < arr[i][0] && dp[i] < dp[j] + arr[i][2]) {  // 두번째 조건 매우 중요! 최대 인원수 도출해야해서
 						dp[i] = dp[j] + arr[i][2];
 						continue;
 					}
 			}
-			if(flag == 0) {
-				dp[i] = arr[i][2];
-			}
+			
 		}
 		
 //		for(int i = 0; i < N; i++) {
