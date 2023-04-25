@@ -1,21 +1,16 @@
 # SSAFY_Algorithm
-SSAFY 서울10반 알고리즘 스터디 (22.10.04~)
+SSAFY 서울10반 알고리즘 스터디 
 
-### 매일 한 문제 : 일주일 총 7문제 (평일 실버 5문제, 주말 골드 2문제)
--> 밀리지 않게 매일 풀자!!
-
-### 정기 회의 : 목요일 : 10시
--> 주말에 풀 골드 문제 2개 정하기
-
-### 실버 문제 전 날 12시 전에 올리기
-월 : 대선 화 : 재희 수 : 태윤 목 : 형석 금 : 세권 순서입니다~
-
-### ISSUE에 전날 12시 전에 다음 날 풀 문제를 작성한다.
-
-### 각자 본인의 branch에서 작업하기!!
-1. 본인의 branch로 checkout한다.
-2. 본인의 branch에서 작업한다.
-3. 본인의 branch에 add 및 commit한다.
-4. 본인의 branch로 push한다.
-5. 본인의 branch에서 master로 pull request요청한다.
-6. 다른 사람들의 pull request를 보고 코드리뷰한다.
+### PriorityQueue 정렬
+```
+PriorityQueue<int[]> queue = new PriorityQueue<>(new Comparator<int[]>() {
+    @Override
+    public int compare(int[] o1, int[] o2) {
+        if(o1[1] == o2[1]) {
+            return o1[0] - o2[0];
+        }else {
+            return o2[1] - o1[1];
+        }
+    }
+});
+```
